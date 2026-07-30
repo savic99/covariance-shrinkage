@@ -85,7 +85,7 @@ $\mu I_N$ target collapse to exactly $I_N$.
 out-of-sample risk of the portfolio whose weights are the $i$-th sample eigenvector. That is
 not computable, but RMT gives its large-$N$ limit in terms of the observed spectrum alone:
 
-$$\hat\xi_i = \frac{\operatorname{Re}(z_i)}{|1 - q + q z_i g(z_i)|^2},
+$$\hat\xi_i = \frac{Re(z_i)}{|1 - q + q z_i g(z_i)|^2},
 \qquad g(z_i) = \frac{1}{N-1}\sum_{j \neq i}\frac{1}{z_i - \lambda_j},
 \qquad z_i = \lambda_i - iN^{-1/2}.$$
 
