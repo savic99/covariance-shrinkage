@@ -57,7 +57,7 @@ from the evaluation period).
 Current S&P 500 constituents from Wikipedia, ~5 years of adjusted daily closes and volumes
 from Yahoo Finance via `yfinance`: 502 tickers, 2021-06-28 to 2026-07-27.
 Among these stocks we have chosen the 300 most liquid names with at most 1% of the missing values and
-we keep only one among the duplicate security paris like GOOGL/GOOG.
+we keep only one among the duplicate security pairs like GOOGL/GOOG.
 
 
 Final panel: $N = 300$, $T = 1000$, 2022-07-27 to 2026-07-23, no gaps. Mean pairwise
@@ -104,7 +104,7 @@ industry duopolies legitimately produce small eigenvalues, $\lambda_N$ is the no
 statistic in the spectrum, and $\kappa$ collapses — inflating the bulk and, since the trace
 is fixed, squeezing the market mode out of the budget.
 
-| calibration | $\kappa$ | fraction capped | market mode retained |
+| calibration | $\kappa$ | fraction capped | $\frac{\text{cleaned market mode}}{\text{raw market mode}}$ |
 |---|---|---|---|
 | $\lambda_N$ (published) | 0.225 | 65% | 0.747 |
 | 15th percentile (ours) | 1.29 | 9.3% | 0.952 |
@@ -134,14 +134,14 @@ cross-checked against splitting the sample into non-overlapping 60-day blocks.
 ## Results
 
 $N = 300$, $T = 500$ ($q = 0.60$), daily rebalancing, 500 out-of-sample days.
+We define $\Psi$ as the ratio of the realized (i.e. out of sample) and predicted volatility.
 
-| | realized vol | 95% CI | $\Psi$ | leverage | eff. N | turnover |
-|---|---|---|---|---|---|---|
-| raw | 14.65% | [13.54, 16.05] | 3.07 | 9.24 | 1.9 | 0.795 |
-| Ledoit–Wolf | 11.32% | [10.09, 12.91] | 1.98 | 5.48 | 5.5 | 0.346 |
-| Optimal RIE (IWs) | 10.29% | [8.96, 12.06] | 1.60 | 4.09 | 9.1 | 0.232 |
-| $\Xi = I$ | 12.82% | [9.71, 16.94] | 8.30 | 1.00 | 219.4 | 0.012 |
-| equal weight | 16.03% | | | 1.00 | 300 | |
+| | realized vol | 95% CI | $\Psi$ | leverage | turnover |
+|---|---|---|---|---|---|
+| raw | 14.65% | [13.54, 16.05] | 3.07 | 9.24  | 0.795 |
+| Ledoit–Wolf | 11.32% | [10.09, 12.91] | 1.98 | 5.5 | 0.346 |
+| Optimal RIE (IWs) | 10.29% | [8.96, 12.06] | 1.60 | 4.09  | 0.232 |
+| $\Xi = I$ | 12.82% | [9.71, 16.94] | 8.30 | 1.00 | 0.012 |
 
 **Dependence on $q$.** The margin grows with $q$ up to a point, then the optimal RIE breaks:
 
@@ -170,7 +170,7 @@ $q = 0.6$ — two separate $\sqrt{1-q}$ effects that compound, since the in-samp
 too low *and* the portfolio built from a noisy $E$ is genuinely worse. Simulating stationary
 Gaussian panels with the same true correlation matrix and running the identical harness
 gives $\Psi_{\text{raw}} = 2.49 \pm 0.08$, matching. Against that baseline the real-data
-values are ~20% higher for raw and the optimal RIE, which is could be explained with the
+values are ~20% higher for raw and the optimal RIE, which could be explained by the
 sample being non-stationary.
 
 
